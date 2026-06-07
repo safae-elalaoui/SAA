@@ -82,7 +82,7 @@ const Home = () => {
     <div className="min-h-screen">
       
       {/* 1. Hero and Multi-Criteria Search Section */}
-      <div className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+      <div className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
         {/* Background Image with Lighter Overlay to show image better */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -90,27 +90,27 @@ const Home = () => {
             backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/20 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
         </div>
 
-        {/* Hero Title & Subtext */}
-        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 mt-8">
+        {/* Hero Content aligned to the left */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col items-center text-center bg-slate-950/70 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-3xl shadow-2xl mb-8"
+            className="flex flex-col items-start text-left bg-slate-950/70 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl mb-8 max-w-2xl"
           >
-            <span className="px-3 md:px-4 py-1.5 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
+            <span className="px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-glow">
               Exclusive Luxury Real Estate
             </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-4 md:mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
               Find Your Sanctuary of <br />
-              <span className="bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 bg-clip-text text-transparent">
                 Refined Luxury Living
               </span>
             </h1>
-            <p className="text-slate-200 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed">
+            <p className="text-slate-200 text-sm md:text-base lg:text-lg leading-relaxed">
               Immodirect curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco. Experience premium brokerage services tailored to your lifestyle.
             </p>
           </motion.div>
@@ -120,7 +120,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="w-full max-w-4xl mx-auto bg-slate-950/70 border border-white/5 backdrop-blur-2xl rounded-2xl md:rounded-3xl p-4 md:p-5 lg:p-6 shadow-2xl"
+            className="w-full max-w-3xl bg-slate-950/70 border border-white/5 backdrop-blur-2xl rounded-2xl md:rounded-3xl p-4 md:p-5 lg:p-6 shadow-2xl"
           >
             <form onSubmit={handleSearchSubmit} className="flex flex-col gap-5">
               
