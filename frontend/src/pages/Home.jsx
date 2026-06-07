@@ -82,24 +82,24 @@ const Home = () => {
     <div className="min-h-screen">
       
       {/* 1. Hero and Multi-Criteria Search Section */}
-      <div className="relative h-[75vh] sm:h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image with Dark Linear Overlay */}
+      <div className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-12 overflow-hidden">
+        {/* Background Image with Lighter Overlay to show image better */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
             backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/70 to-slate-950" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-slate-950/20 to-slate-950" />
         </div>
 
         {/* Hero Title & Subtext */}
-        <div className="relative z-10 max-w-5xl mx-auto px-3 md:px-4 text-center mt-8 md:mt-12 lg:mt-20">
+        <div className="relative z-10 w-full max-w-5xl mx-auto px-4 mt-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col items-center"
+            className="flex flex-col items-center text-center bg-slate-950/70 backdrop-blur-xl border border-white/10 p-8 md:p-12 rounded-3xl shadow-2xl mb-8"
           >
             <span className="px-3 md:px-4 py-1.5 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-400 text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
               Exclusive Luxury Real Estate
@@ -110,7 +110,7 @@ const Home = () => {
                 Refined Luxury Living
               </span>
             </h1>
-            <p className="text-slate-300 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed mb-8 md:mb-12">
+            <p className="text-slate-200 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed">
               Immodirect curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco. Experience premium brokerage services tailored to your lifestyle.
             </p>
           </motion.div>
