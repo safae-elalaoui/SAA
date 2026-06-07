@@ -14,7 +14,7 @@ const Footer = () => {
               E
             </div>
             <span className="text-lg font-bold tracking-tight text-white">
-              Estate<span className="text-orange-500 font-extrabold">Elite</span>
+              Immo<span className="text-orange-500 font-extrabold">direct</span>
             </span>
           </div>
           <p className="text-sm text-slate-400 leading-relaxed">
@@ -85,15 +85,15 @@ const Footer = () => {
           <div className="flex flex-col gap-3 text-sm text-slate-400">
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5" />
-              <span>Boulevard d'Anfa, Complex Elite Building 4B, Casablanca, Morocco</span>
+              <span>Mohammedia</span>
             </div>
             <div className="flex items-center gap-3">
               <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>+212 522-889900</span>
+              <span>0638677255</span>
             </div>
             <div className="flex items-center gap-3">
               <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>contact@estateelite.ma</span>
+              <span>Safae10maroc25@gmail.com</span>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ const Footer = () => {
       </div>
 
       <div className="max-w-7xl mx-auto pt-8 border-t border-slate-900/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <p>© 2026 EstateElite SA. All rights reserved. Designed for premium luxury brokerage.</p>
+        <p>© 2026 Immodirect SA. All rights reserved. Designed for premium luxury brokerage.</p>
         <div className="flex items-center gap-1.5 text-slate-400">
           <ShieldCheck className="w-4.5 h-4.5 text-emerald-500" />
           <span>Fully certified real estate licensing board.</span>

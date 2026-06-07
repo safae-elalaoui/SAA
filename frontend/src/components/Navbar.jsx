@@ -29,7 +29,7 @@ const Navbar = () => {
             E
           </div>
           <span className="text-lg md:text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent group-hover:text-orange-400 transition-colors">
-            Estate<span className="text-orange-500 font-extrabold">Elite</span>
+            Immo<span className="text-orange-500 font-extrabold">direct</span>
           </span>
         </Link>
 

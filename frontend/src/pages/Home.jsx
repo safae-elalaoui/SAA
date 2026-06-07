@@ -111,7 +111,7 @@ const Home = () => {
               </span>
             </h1>
             <p className="text-slate-300 text-sm md:text-base lg:text-lg max-w-2xl leading-relaxed mb-8 md:mb-12">
-              EstateElite curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco. Experience premium brokerage services tailored to your lifestyle.
+              Immodirect curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco. Experience premium brokerage services tailored to your lifestyle.
             </p>
           </motion.div>
 
