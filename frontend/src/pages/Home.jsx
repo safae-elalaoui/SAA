@@ -90,7 +90,7 @@ const Home = () => {
             backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/50 to-transparent" />
+          <div className="absolute inset-0 bg-slate-950/20" />
         </div>
 
         {/* Hero Content aligned to the left */}
@@ -99,19 +99,19 @@ const Home = () => {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col items-start text-left bg-slate-950/70 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-3xl shadow-2xl mb-8 max-w-2xl"
+            className="flex flex-col items-start text-left bg-white/10 backdrop-blur-md border border-white/20 p-6 md:p-8 rounded-2xl shadow-2xl mb-6 max-w-md lg:max-w-lg"
           >
-            <span className="px-4 py-1.5 rounded-full border border-orange-500/30 bg-orange-500/20 text-orange-400 text-xs font-bold uppercase tracking-widest mb-6 shadow-glow">
+            <span className="px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/20 text-orange-400 text-[10px] font-bold uppercase tracking-widest mb-4 shadow-glow">
               Exclusive Luxury Real Estate
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
+            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight mb-4">
               Find Your Sanctuary of <br />
               <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 bg-clip-text text-transparent">
                 Refined Luxury Living
               </span>
             </h1>
-            <p className="text-slate-200 text-sm md:text-base lg:text-lg leading-relaxed">
-              Immodirect curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco. Experience premium brokerage services tailored to your lifestyle.
+            <p className="text-slate-100 text-xs md:text-sm leading-relaxed font-medium">
+              Immodirect curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco.
             </p>
           </motion.div>
 
@@ -120,7 +120,7 @@ const Home = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="w-full max-w-3xl bg-slate-950/70 border border-white/5 backdrop-blur-2xl rounded-2xl md:rounded-3xl p-4 md:p-5 lg:p-6 shadow-2xl"
+            className="w-full max-w-md lg:max-w-lg bg-white/10 border border-white/20 backdrop-blur-md rounded-2xl p-4 md:p-5 shadow-2xl"
           >
             <form onSubmit={handleSearchSubmit} className="flex flex-col gap-5">
               
@@ -151,15 +151,15 @@ const Home = () => {
               </div>
 
               {/* Multi-Criteria Input Selectors */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 gap-3">
                 
                 {/* 1. City Dropdown */}
-                <div className="flex flex-col text-left gap-1.5">
-                  <label className="text-xs text-slate-500 font-bold uppercase tracking-wider pl-1">City</label>
+                <div className="flex flex-col text-left gap-1">
+                  <label className="text-[10px] text-slate-100 font-bold uppercase tracking-wider pl-1">City</label>
                   <select
                     value={searchCity}
                     onChange={(e) => setSearchCity(e.target.value)}
-                    className="luxury-input py-2.5 text-sm"
+                    className="luxury-input py-2 text-sm bg-white/5 border-white/20 text-white"
                   >
                     <option value="">All Morocco</option>
                     <option value="Marrakech">Marrakech</option>
@@ -171,12 +171,12 @@ const Home = () => {
                 </div>
 
                 {/* 2. Property Type */}
-                <div className="flex flex-col text-left gap-1.5">
-                  <label className="text-xs text-slate-500 font-bold uppercase tracking-wider pl-1">Property Type</label>
+                <div className="flex flex-col text-left gap-1">
+                  <label className="text-[10px] text-slate-100 font-bold uppercase tracking-wider pl-1">Property Type</label>
                   <select
                     value={searchType}
                     onChange={(e) => setSearchType(e.target.value)}
-                    className="luxury-input py-2.5 text-sm"
+                    className="luxury-input py-2 text-sm bg-white/5 border-white/20 text-white"
                   >
                     <option value="">All Types</option>
                     <option value="apartment">Apartment</option>
@@ -187,12 +187,12 @@ const Home = () => {
                 </div>
 
                 {/* 3. Budget Range */}
-                <div className="flex flex-col text-left gap-1.5">
-                  <label className="text-xs text-slate-500 font-bold uppercase tracking-wider pl-1">Budget</label>
+                <div className="flex flex-col text-left gap-1">
+                  <label className="text-[10px] text-slate-100 font-bold uppercase tracking-wider pl-1">Budget</label>
                   <select
                     value={searchPrice}
                     onChange={(e) => setSearchPrice(e.target.value)}
-                    className="luxury-input py-2.5 text-sm"
+                    className="luxury-input py-2 text-sm bg-white/5 border-white/20 text-white"
                   >
                     <option value="">Any Budget</option>
                     {searchStatus === 'rent' ? (
@@ -211,10 +211,10 @@ const Home = () => {
                 </div>
 
                 {/* 4. Action Button */}
-                <div className="flex items-end">
+                <div className="flex items-end mt-2">
                   <button
                     type="submit"
-                    className="btn-primary w-full flex items-center justify-center gap-2 py-3"
+                    className="btn-primary w-full flex items-center justify-center gap-2 py-2.5 text-sm"
                   >
                     <Search className="w-4 h-4" />
                     <span>Search Matches</span>
