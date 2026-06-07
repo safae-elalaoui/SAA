@@ -10,6 +10,8 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Admin from './pages/Admin';
 
+import { AnimatePresence, motion } from 'framer-motion';
+
 const App = () => {
   const location = useLocation();
 
@@ -24,18 +26,20 @@ const App = () => {
 
       {/* Main Pages Content Stage */}
       <div className="flex-grow">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/properties/:id" element={<PropertyDetails />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/admin" element={<Admin />} />
-          
-          {/* Catch-all Redirect */}
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+            <Route path="/search" element={<PageWrapper><Search /></PageWrapper>} />
+            <Route path="/properties/:id" element={<PageWrapper><PropertyDetails /></PageWrapper>} />
+            <Route path="/login" element={<PageWrapper><Login /></PageWrapper>} />
+            <Route path="/register" element={<PageWrapper><Register /></PageWrapper>} />
+            <Route path="/dashboard" element={<PageWrapper><Dashboard /></PageWrapper>} />
+            <Route path="/admin" element={<PageWrapper><Admin /></PageWrapper>} />
+            
+            {/* Catch-all Redirect */}
+            <Route path="*" element={<PageWrapper><Home /></PageWrapper>} />
+          </Routes>
+        </AnimatePresence>
       </div>
 
       {/* Standard Footer */}
@@ -44,5 +48,17 @@ const App = () => {
     </div>
   );
 };
+
+const PageWrapper = ({ children }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.4 }}
+    className="h-full w-full"
+  >
+    {children}
+  </motion.div>
+);
 
 export default App;

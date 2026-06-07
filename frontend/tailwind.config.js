@@ -9,15 +9,22 @@ export default {
   theme: {
     extend: {
       colors: {
-        orange: colors.blue,
-        amber: colors.indigo,
+        orange: {
+          400: '#EAB308', // Gold
+          500: '#D4AF37', // Metallic Gold
+          600: '#CA8A04', // Dark Gold
+        },
+        amber: {
+          400: '#FDE047',
+          500: '#EAB308',
+        },
         luxury: {
           dark: '#070C1B',
           navy: '#0F172A',
           slate: '#1E293B',
-          gold: '#3B82F6',
-          orange: '#2563EB',
-          bronze: '#1D4ED8',
+          gold: '#D4AF37',
+          orange: '#D4AF37',
+          bronze: '#B45309',
           light: '#F8FAFC',
           glass: 'rgba(15, 23, 42, 0.65)'
         }
@@ -29,9 +36,9 @@ export default {
         xs: '2px',
       },
       boxShadow: {
-        'glow': '0 0 15px rgba(59, 130, 246, 0.3)',
+        'glow': '0 0 15px rgba(212, 175, 55, 0.3)',
         'luxury': '0 10px 30px -10px rgba(7, 12, 27, 0.15)',
-        'gold-glow': '0 0 15px rgba(37, 99, 235, 0.25)',
+        'gold-glow': '0 0 15px rgba(212, 175, 55, 0.25)',
       }
     },
   },
