@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased selection:bg-orange-500 selection:text-white;
+  }
+  
+  /* Smooth Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-slate-900;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700/60 rounded-full hover:bg-orange-500/80 transition-colors duration-200;
+  }
+
+  /* Mobile-responsive base font sizes */
+  html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (max-width: 640px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 14px;
+    }
+  }
+}
+
+@layer components {
+  /* Premium Glassmorphic Cards & Panels */
+  .glass-panel {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-panel-hover {
+    @apply transition-all duration-300;
+  }
+  .glass-panel-hover:hover {
+    background: rgba(15, 23, 42, 0.65);
+    border-color: rgba(247, 127, 0, 0.25);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(247, 127, 0, 0.05);
+  }
+
+  /* Luxury Inputs */
+  .luxury-input {
+    @apply w-full px-4 py-3 bg-slate-900/60 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-200 backdrop-blur-sm;
+  }
+
+  @media (max-width: 640px) {
+    .luxury-input {
+      @apply px-3 py-2.5 text-sm;
+    }
+  }
+
+  /* Chat Message Bubbles */
+  .chat-bubble-sent {
+    @apply bg-gradient-to-br from-orange-600 to-amber-500 text-white rounded-2xl rounded-tr-sm px-5 py-3.5 shadow-lg shadow-orange-950/20;
+  }
+
+  .chat-bubble-received {
+    @apply bg-slate-800/80 text-slate-200 rounded-2xl rounded-tl-sm px-5 py-3.5 border border-slate-700/50;
+  }
+
+  @media (max-width: 640px) {
+    .chat-bubble-sent,
+    .chat-bubble-received {
+      @apply px-4 py-3 text-sm rounded-xl;
+    }
+  }
+
+  /* Chat Container */
+  .chat-container {
+    @apply flex flex-col h-full;
+  }
+
+  .chat-messages-area {
+    @apply flex-1 overflow-y-auto px-4 md:px-6 lg:px-8 py-4 md:py-6 space-y-4 md:space-y-5;
+    scroll-behavior: smooth;
+  }
+
+  .chat-input-area {
+    @apply border-t border-slate-800/60 p-3 md:p-4 lg:p-5 bg-slate-900/30 backdrop-blur-sm;
+  }
+
+  /* Premium Buttons */
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg shadow-orange-950/30 hover:shadow-orange-500/20 hover:scale-[1.01];
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-slate-200 font-semibold rounded-xl transition-all duration-300 transform active:scale-95;
+  }
+
+  .btn-danger {
+    @apply px-6 py-3 bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg shadow-rose-950/30 hover:shadow-rose-500/20;
+  }
+
+  /* Shimmer animations for Skeleton screens */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(30, 41, 59, 0.4) 25%,
+      rgba(51, 65, 85, 0.6) 50%,
+      rgba(30, 41, 59, 0.4) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading-shimmer 1.5s infinite;
+  }
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Custom leaflet map styles to match dark theme */
+.leaflet-container {
+  @apply bg-slate-900 rounded-2xl overflow-hidden border border-slate-800;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+}
+.leaflet-bar a {
+  @apply !bg-slate-950 !border-slate-800 !text-slate-300 hover:!bg-slate-800;
+}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+  @apply bg-slate-900 text-slate-200 border border-slate-800 shadow-2xl;
+}
+.leaflet-popup-content {
+  @apply m-3;
+}
