@@ -29,12 +29,6 @@ const Dashboard = () => {
   const [messages, setMessages] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
-  // Chat state
-  const [selectedConversation, setSelectedConversation] = useState(null);
-  const [conversationMessages, setConversationMessages] = useState([]);
-  const [replyMessage, setReplyMessage] = useState('');
-  const [replySending, setReplySending] = useState(false);
-
   // Selected property for editing
   const [editPropertyId, setEditPropertyId] = useState(null);
 
@@ -222,76 +216,70 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 md:pt-28 pb-16 md:pb-20 px-3 md:px-8 max-w-7xl mx-auto flex flex-col lg:flex-row gap-4 md:gap-8">
+    <div className="min-h-screen pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
       
       {/* ============================================================== */}
       {/* A. LEFT MENU SELECTOR SIDEBAR                                  */}
       {/* ============================================================== */}
-      <aside className="w-full lg:w-64 flex flex-col bg-slate-950 border border-slate-900 rounded-2xl md:rounded-3xl p-4 md:p-5 shadow-2xl shrink-0 h-fit gap-2 sticky top-20 md:top-28 z-10">
+      <aside className="w-full md:w-64 flex flex-col bg-slate-950 border border-slate-900 rounded-3xl p-5 shadow-2xl shrink-0 h-fit gap-2">
         <div className="px-3 py-3 border-b border-slate-900 mb-2">
           <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Account Workspace</p>
-          <h2 className="text-sm md:text-md font-bold text-white truncate mt-1">{user?.username}</h2>
+          <h2 className="text-md font-bold text-white truncate mt-1">{user?.username}</h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:flex lg:flex-col gap-2">
-          <button
-            onClick={() => navigate('/dashboard?tab=listings')}
-            className={`flex items-center justify-center lg:justify-start gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold transition-all ${
-              activeTab === 'listings'
-                ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
-                : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
-            }`}
-          >
-            <LayoutGrid className="w-4 h-4 md:w-4.5 md:h-4.5" />
-            <span className="hidden sm:inline lg:inline">My Listings</span>
-            <span className="sm:hidden text-[10px]">Listings</span>
-          </button>
+        <button
+          onClick={() => navigate('/dashboard?tab=listings')}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+            activeTab === 'listings'
+              ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
+              : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
+          }`}
+        >
+          <LayoutGrid className="w-4.5 h-4.5" />
+          <span>My Listings</span>
+        </button>
 
-          <button
-            onClick={() => navigate('/dashboard?tab=add-property')}
-            className={`flex items-center justify-center lg:justify-start gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold transition-all ${
-              activeTab === 'add-property'
-                ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
-                : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
-            }`}
-          >
-            <PlusCircle className="w-4 h-4 md:w-4.5 md:h-4.5" />
-            <span className="hidden sm:inline lg:inline">Post Property</span>
-            <span className="sm:hidden text-[10px]">Post</span>
-          </button>
+        <button
+          onClick={() => navigate('/dashboard?tab=add-property')}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+            activeTab === 'add-property'
+              ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
+              : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
+          }`}
+        >
+          <PlusCircle className="w-4.5 h-4.5" />
+          <span>Post New Property</span>
+        </button>
 
-          <button
-            onClick={() => navigate('/dashboard?tab=messages')}
-            className={`flex items-center justify-center lg:justify-start gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold transition-all ${
-              activeTab === 'messages'
-                ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
-                : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
-            }`}
-          >
-            <MessageSquare className="w-4 h-4 md:w-4.5 md:h-4.5" />
-            <span className="hidden sm:inline lg:inline">Messages</span>
-            <span className="sm:hidden text-[10px]">Chat</span>
-          </button>
+        <button
+          onClick={() => navigate('/dashboard?tab=messages')}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+            activeTab === 'messages'
+              ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
+              : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
+          }`}
+        >
+          <MessageSquare className="w-4.5 h-4.5" />
+          <span>Buyer Messages</span>
+        </button>
 
-          <button
-            onClick={() => navigate('/dashboard?tab=favorites')}
-            className={`flex items-center justify-center lg:justify-start gap-2 md:gap-3 px-3 md:px-4 py-2.5 md:py-3 rounded-xl text-xs md:text-sm font-semibold transition-all ${
-              activeTab === 'favorites'
-                ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
-                : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
-            }`}
-          >
-            <Heart className="w-4 h-4 md:w-4.5 md:h-4.5" />
-            <span className="hidden sm:inline lg:inline">Favorites</span>
-            <span className="sm:hidden text-[10px]">Saved</span>
-          </button>
-        </div>
+        <button
+          onClick={() => navigate('/dashboard?tab=favorites')}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
+            activeTab === 'favorites'
+              ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
+              : 'text-slate-400 hover:bg-slate-900/60 hover:text-slate-200'
+          }`}
+        >
+          <Heart className="w-4.5 h-4.5" />
+          <span>My Favorites</span>
+        </button>
       </aside>
 
       {/* ============================================================== */}
       {/* B. RIGHT VIEWS CONTENT CONTAINER                               */}
       {/* ============================================================== */}
-      <main className="flex-grow bg-slate-950 border border-slate-900 rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 shadow-2xl min-h-[500px] w-full">
+      <main className="flex-grow bg-slate-950 border border-slate-900 rounded-3xl p-6 md:p-8 shadow-2xl min-h-[500px]">
         
         {/* TAB 1: MY ACTIVE POSTED LISTINGS */}
         {activeTab === 'listings' && (
@@ -613,210 +601,75 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* TAB 4: CLIENT MESSAGE INBOX - ChatGPT Style */}
+        {/* TAB 4: CLIENT MESSAGE INBOX */}
         {activeTab === 'messages' && (
-          <div className="h-[calc(100vh-180px)] md:h-[calc(100vh-200px)] flex flex-col">
-            <h2 className="text-lg md:text-xl font-bold text-white mb-4 md:mb-6">Property Inquiries Chat</h2>
-            
+          <div>
+            <h2 className="text-xl font-bold text-white mb-6">Client Inquiries Inbox</h2>
             {loading ? (
-              <div className="space-y-4 flex-1">
+              <div className="space-y-4">
                 {Array.from({ length: 3 }).map((_, idx) => (
                   <div key={idx} className="h-28 bg-slate-900 rounded-2xl shimmer animate-pulse" />
                 ))}
               </div>
             ) : messages.length > 0 ? (
-              <div className="flex flex-col lg:flex-row gap-4 md:gap-6 flex-1 min-h-0">
-                
-                {/* Conversation List Sidebar */}
-                <div className={`w-full lg:w-80 xl:w-96 flex flex-col bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden ${selectedConversation ? 'hidden lg:flex' : 'flex'}`}>
-                  <div className="p-4 border-b border-slate-800 bg-slate-900/60">
-                    <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Conversations</p>
-                    <p className="text-sm text-slate-400 mt-1">{messages.length} active chats</p>
-                  </div>
-                  <div className="flex-1 overflow-y-auto p-3 space-y-2">
-                    {messages.map((msg) => (
-                      <button
-                        key={msg.id}
-                        onClick={() => {
-                          setSelectedConversation(msg);
-                          setConversationMessages([
-                            {
-                              id: msg.id,
-                              message: msg.message,
-                              sender_name: msg.sender_name,
-                              sender_email: msg.sender_email,
-                              sender_phone: msg.sender_phone,
-                              created_at: msg.created_at,
-                              property_title: msg.property_title,
-                              property_id: msg.property_id,
-                              property_images: msg.property_images,
-                              is_reply: false
-                            }
-                          ]);
-                        }}
-                        className={`w-full p-4 rounded-xl text-left transition-all border ${
-                          selectedConversation?.id === msg.id
-                            ? 'bg-orange-600/20 border-orange-500/50 shadow-lg shadow-orange-950/20'
-                            : 'bg-slate-900/40 border-slate-800 hover:border-slate-700 hover:bg-slate-900/60'
-                        }`}
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-600 to-amber-400 flex items-center justify-center text-white font-bold text-sm shrink-0">
-                            {msg.sender_name.charAt(0).toUpperCase()}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between gap-2 mb-1">
-                              <p className="font-semibold text-white text-sm truncate">{msg.sender_name}</p>
-                              <span className="text-[10px] text-slate-500 font-bold shrink-0">
-                                {new Date(msg.created_at).toLocaleDateString('fr-MA')}
-                              </span>
-                            </div>
-                            <p className="text-xs text-orange-400 font-semibold truncate mb-1">{msg.property_title}</p>
-                            <p className="text-xs text-slate-400 line-clamp-2">{msg.message}</p>
-                          </div>
+              <div className="flex flex-col gap-5">
+                {messages.map((msg) => (
+                  <div
+                    key={msg.id}
+                    className="p-5 bg-slate-900/40 border border-slate-900 rounded-2xl flex flex-col gap-4"
+                  >
+                    {/* Related property line */}
+                    <div className="flex items-center justify-between border-b border-slate-900 pb-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-slate-800 bg-slate-950">
+                          <img
+                            src={getImageUrl(msg.property_images ? msg.property_images.split(',')[0] : '')}
+                            alt="prop"
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Chat Area - ChatGPT Style */}
-                <div className={`flex-1 flex flex-col bg-slate-900/20 border border-slate-800 rounded-2xl overflow-hidden ${!selectedConversation ? 'hidden lg:flex' : 'flex'}`}>
-                  {selectedConversation ? (
-                    <>
-                      {/* Chat Header */}
-                      <div className="p-4 md:p-5 border-b border-slate-800 bg-slate-900/60 backdrop-blur-sm">
-                        <div className="flex items-center gap-3">
-                          <button
-                            onClick={() => setSelectedConversation(null)}
-                            className="lg:hidden p-2 rounded-lg bg-slate-800 text-slate-400 hover:text-white"
-                          >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                          </button>
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-orange-600 to-amber-400 flex items-center justify-center text-white font-bold">
-                            {selectedConversation.sender_name.charAt(0).toUpperCase()}
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="font-bold text-white text-sm md:text-base truncate">{selectedConversation.sender_name}</p>
-                            <p className="text-xs text-slate-400 truncate">{selectedConversation.sender_email}</p>
-                          </div>
-                          <Link 
-                            to={`/properties/${selectedConversation.property_id}`}
-                            className="px-3 md:px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-xl text-xs md:text-sm font-semibold text-orange-400 transition-colors shrink-0"
-                          >
-                            View Property
+                        <div>
+                          <p className="text-xs text-slate-500 font-bold uppercase">Regarding property</p>
+                          <Link to={`/properties/${msg.property_id}`} className="font-bold text-slate-200 text-sm hover:text-orange-400 transition-colors">
+                            {msg.property_title}
                           </Link>
                         </div>
                       </div>
-
-                      {/* Messages Area */}
-                      <div className="chat-messages-area flex-1 overflow-y-auto">
-                        {conversationMessages.map((msg, idx) => (
-                          <motion.div
-                            key={msg.id}
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className={`flex ${msg.is_reply ? 'justify-end' : 'justify-start'}`}
-                          >
-                            <div className={`max-w-[85%] md:max-w-[75%] lg:max-w-[70%] ${msg.is_reply ? 'order-2' : 'order-1'}`}>
-                              {!msg.is_reply && (
-                                <div className="flex items-center gap-2 mb-2 px-1">
-                                  <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-orange-600 to-amber-400 flex items-center justify-center text-white font-bold text-xs">
-                                    {msg.sender_name.charAt(0).toUpperCase()}
-                                  </div>
-                                  <span className="text-xs font-semibold text-slate-400">{msg.sender_name}</span>
-                                  <span className="text-[10px] text-slate-600">
-                                    {new Date(msg.created_at).toLocaleTimeString('fr-MA', { hour: '2-digit', minute: '2-digit' })}
-                                  </span>
-                                </div>
-                              )}
-                              <div className={msg.is_reply ? 'chat-bubble-sent' : 'chat-bubble-received'}>
-                                <p className="text-sm md:text-base leading-relaxed whitespace-pre-line">{msg.message}</p>
-                              </div>
-                              {msg.is_reply && (
-                                <div className="flex justify-end mt-1 px-1">
-                                  <span className="text-[10px] text-slate-500">
-                                    {new Date(msg.created_at).toLocaleTimeString('fr-MA', { hour: '2-digit', minute: '2-digit' })}
-                                  </span>
-                                </div>
-                              )}
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-
-                      {/* Reply Input Area */}
-                      <div className="chat-input-area">
-                        <form
-                          onSubmit={async (e) => {
-                            e.preventDefault();
-                            if (!replyMessage.trim()) return;
-                            
-                            setReplySending(true);
-                            try {
-                              // For now, just add to local state (backend reply endpoint would be needed)
-                              const newReply = {
-                                id: Date.now(),
-                                message: replyMessage,
-                                sender_name: user.username,
-                                created_at: new Date().toISOString(),
-                                is_reply: true
-                              };
-                              setConversationMessages([...conversationMessages, newReply]);
-                              setReplyMessage('');
-                              showToast('Reply sent successfully!', 'success');
-                            } catch (err) {
-                              showToast('Failed to send reply.', 'error');
-                            } finally {
-                              setReplySending(false);
-                            }
-                          }}
-                          className="flex gap-3 items-end"
-                        >
-                          <textarea
-                            value={replyMessage}
-                            onChange={(e) => setReplyMessage(e.target.value)}
-                            placeholder="Type your reply..."
-                            rows="1"
-                            className="flex-1 luxury-input py-3 md:py-3.5 text-sm md:text-base resize-none rounded-2xl"
-                            style={{ minHeight: '48px', maxHeight: '120px' }}
-                            onKeyDown={(e) => {
-                              if (e.key === 'Enter' && !e.shiftKey) {
-                                e.preventDefault();
-                                e.currentTarget.form.requestSubmit();
-                              }
-                            }}
-                          />
-                          <button
-                            type="submit"
-                            disabled={replySending || !replyMessage.trim()}
-                            className="p-3 md:p-3.5 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-2xl transition-all shadow-lg shadow-orange-950/20 shrink-0"
-                          >
-                            <Send className="w-5 h-5 md:w-5.5 md:h-5.5" />
-                          </button>
-                        </form>
-                        <p className="text-[10px] text-slate-500 mt-2 text-center">
-                          Press Enter to send, Shift+Enter for new line
-                        </p>
-                      </div>
-                    </>
-                  ) : (
-                    <div className="flex-1 flex items-center justify-center p-8">
-                      <div className="text-center">
-                        <MessageSquare className="w-16 h-16 md:w-20 md:h-20 text-slate-700 mx-auto mb-4" />
-                        <p className="text-slate-400 text-sm md:text-base">Select a conversation to start chatting</p>
-                      </div>
+                      <span className="text-[10px] text-slate-500 font-bold flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {new Date(msg.created_at).toLocaleDateString('fr-MA')}
+                      </span>
                     </div>
-                  )}
-                </div>
+
+                    {/* Message body */}
+                    <p className="text-slate-300 text-sm leading-relaxed whitespace-pre-line bg-slate-950/45 p-3 rounded-xl border border-slate-900/60">
+                      "{msg.message}"
+                    </p>
+
+                    {/* Sender profile */}
+                    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-slate-400 border-t border-slate-900/60 pt-3">
+                      <div className="flex items-center gap-1.5">
+                        <User className="w-4 h-4 text-orange-500" />
+                        <span>{msg.sender_name}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Mail className="w-4 h-4 text-orange-500" />
+                        <a href={`mailto:${msg.sender_email}`} className="hover:text-white transition-colors">{msg.sender_email}</a>
+                      </div>
+                      {msg.sender_phone && (
+                        <div className="flex items-center gap-1.5">
+                          <Phone className="w-4 h-4 text-orange-500" />
+                          <a href={`tel:${msg.sender_phone}`} className="hover:text-white transition-colors">{msg.sender_phone}</a>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             ) : (
               <div className="text-center py-16">
-                <MessageSquare className="w-12 h-12 md:w-16 md:h-16 text-slate-700 mx-auto mb-4" />
-                <p className="text-slate-400 text-sm md:text-base">Your inquiries inbox is currently empty.</p>
+                <MessageSquare className="w-12 h-12 text-slate-700 mx-auto mb-4" />
+                <p className="text-slate-400 text-sm">Your inquiries inbox is currently empty.</p>
               </div>
             )}
           </div>

@@ -82,160 +82,157 @@ const Home = () => {
     <div className="min-h-screen">
       
       {/* 1. Hero and Multi-Criteria Search Section */}
-      <div className="relative min-h-[90vh] flex items-center pt-24 pb-12 overflow-hidden">
-        {/* Background Image with Lighter Overlay to show image better */}
+      <div className="relative h-[85vh] md:h-[90vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image with Dark Linear Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ 
             backgroundImage: "url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80')",
           }}
         >
-          <div className="absolute inset-0 bg-slate-950/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/70 to-slate-950" />
         </div>
 
-        {/* Hero Content aligned to the left */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
+        {/* Hero Title & Subtext */}
+        <div className="relative z-10 max-w-5xl mx-auto px-4 text-center mt-12 md:mt-20">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="flex flex-col items-start text-left bg-white/10 backdrop-blur-md border border-white/20 p-6 md:p-8 rounded-2xl shadow-2xl mb-6 max-w-md lg:max-w-lg"
+            className="flex flex-col items-center"
           >
-            <span className="px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/20 text-orange-400 text-[10px] font-bold uppercase tracking-widest mb-4 shadow-glow">
+            <span className="px-4 py-1.5 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-400 text-xs font-bold uppercase tracking-widest mb-6">
               Exclusive Luxury Real Estate
             </span>
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-6">
               Find Your Sanctuary of <br />
-              <span className="bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 bg-clip-text text-transparent">
                 Refined Luxury Living
               </span>
             </h1>
-            <p className="text-slate-100 text-xs md:text-sm leading-relaxed font-medium">
-              Immodirect curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco.
+            <p className="text-slate-300 md:text-lg max-w-2xl leading-relaxed mb-12">
+              EstateElite curates pristine villas, premium city apartments, and exclusive commercial land opportunities across Morocco. Experience premium brokerage services tailored to your lifestyle.
             </p>
           </motion.div>
 
-        </div>
-      </div>
-
-      {/* Search Console Moved Below Hero */}
-      <div className="max-w-7xl mx-auto px-4 md:px-8 -mt-10 relative z-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="w-full bg-slate-900 border border-slate-800 rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 shadow-2xl"
-        >
-          <form onSubmit={handleSearchSubmit} className="flex flex-col gap-6">
-            
-            {/* Toggles for Rent / Buy */}
-            <div className="flex gap-2 self-start border-b border-slate-800 pb-3 w-full">
-              <button
-                type="button"
-                onClick={() => setSearchStatus('sale')}
-                className={`px-8 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                  searchStatus === 'sale'
-                    ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                Buy
-              </button>
-              <button
-                type="button"
-                onClick={() => setSearchStatus('rent')}
-                className={`px-8 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                  searchStatus === 'rent'
-                    ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                Rent
-              </button>
-            </div>
-
-            {/* Multi-Criteria Input Selectors - HORIZONTAL LAYOUT */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
+          {/* Floating Search Console */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="w-full max-w-4xl mx-auto bg-slate-950/70 border border-white/5 backdrop-blur-2xl rounded-3xl p-5 md:p-6 shadow-2xl"
+          >
+            <form onSubmit={handleSearchSubmit} className="flex flex-col gap-5">
               
-              {/* 1. City Dropdown */}
-              <div className="flex flex-col text-left gap-1.5">
-                <label className="text-xs text-slate-400 font-bold uppercase tracking-wider pl-1">City</label>
-                <select
-                  value={searchCity}
-                  onChange={(e) => setSearchCity(e.target.value)}
-                  className="luxury-input py-3 text-sm bg-slate-950/50"
-                >
-                  <option value="">All Morocco</option>
-                  <option value="Marrakech">Marrakech</option>
-                  <option value="Casablanca">Casablanca</option>
-                  <option value="Tangier">Tangier</option>
-                  <option value="Agadir">Agadir</option>
-                  <option value="Rabat">Rabat</option>
-                </select>
-              </div>
-
-              {/* 2. Property Type */}
-              <div className="flex flex-col text-left gap-1.5">
-                <label className="text-xs text-slate-400 font-bold uppercase tracking-wider pl-1">Property Type</label>
-                <select
-                  value={searchType}
-                  onChange={(e) => setSearchType(e.target.value)}
-                  className="luxury-input py-3 text-sm bg-slate-950/50"
-                >
-                  <option value="">All Types</option>
-                  <option value="apartment">Apartment</option>
-                  <option value="villa">Villa</option>
-                  <option value="house">House</option>
-                  <option value="land">Land</option>
-                </select>
-              </div>
-
-              {/* 3. Budget Range */}
-              <div className="flex flex-col text-left gap-1.5">
-                <label className="text-xs text-slate-400 font-bold uppercase tracking-wider pl-1">Budget</label>
-                <select
-                  value={searchPrice}
-                  onChange={(e) => setSearchPrice(e.target.value)}
-                  className="luxury-input py-3 text-sm bg-slate-950/50"
-                >
-                  <option value="">Any Budget</option>
-                  {searchStatus === 'rent' ? (
-                    <>
-                      <option value="1">Under 15,000 DH/mo</option>
-                      <option value="2">Over 15,000 DH/mo</option>
-                    </>
-                  ) : (
-                    <>
-                      <option value="3">500,000 - 3,000,000 DH</option>
-                      <option value="4">3,000,000 - 10,000,000 DH</option>
-                      <option value="5">Over 10,000,000 DH</option>
-                    </>
-                  )}
-                </select>
-              </div>
-
-              {/* 4. Action Button */}
-              <div className="flex items-end">
+              {/* Toggles for Rent / Buy */}
+              <div className="flex gap-2 self-start border-b border-slate-900 pb-3 w-full">
                 <button
-                  type="submit"
-                  className="btn-primary w-full flex items-center justify-center gap-2 py-3 text-sm"
+                  type="button"
+                  onClick={() => setSearchStatus('sale')}
+                  className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all ${
+                    searchStatus === 'sale'
+                      ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
                 >
-                  <Search className="w-5 h-5" />
-                  <span>Search Matches</span>
+                  Buy
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSearchStatus('rent')}
+                  className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all ${
+                    searchStatus === 'rent'
+                      ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white shadow-lg shadow-orange-950/20'
+                      : 'text-slate-400 hover:text-slate-200'
+                  }`}
+                >
+                  Rent
                 </button>
               </div>
 
-            </div>
+              {/* Multi-Criteria Input Selectors */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                
+                {/* 1. City Dropdown */}
+                <div className="flex flex-col text-left gap-1.5">
+                  <label className="text-xs text-slate-500 font-bold uppercase tracking-wider pl-1">City</label>
+                  <select
+                    value={searchCity}
+                    onChange={(e) => setSearchCity(e.target.value)}
+                    className="luxury-input py-2.5 text-sm"
+                  >
+                    <option value="">All Morocco</option>
+                    <option value="Marrakech">Marrakech</option>
+                    <option value="Casablanca">Casablanca</option>
+                    <option value="Tangier">Tangier</option>
+                    <option value="Agadir">Agadir</option>
+                    <option value="Rabat">Rabat</option>
+                  </select>
+                </div>
 
-          </form>
-        </motion.div>
+                {/* 2. Property Type */}
+                <div className="flex flex-col text-left gap-1.5">
+                  <label className="text-xs text-slate-500 font-bold uppercase tracking-wider pl-1">Property Type</label>
+                  <select
+                    value={searchType}
+                    onChange={(e) => setSearchType(e.target.value)}
+                    className="luxury-input py-2.5 text-sm"
+                  >
+                    <option value="">All Types</option>
+                    <option value="apartment">Apartment</option>
+                    <option value="villa">Villa</option>
+                    <option value="house">House</option>
+                    <option value="land">Land</option>
+                  </select>
+                </div>
+
+                {/* 3. Budget Range */}
+                <div className="flex flex-col text-left gap-1.5">
+                  <label className="text-xs text-slate-500 font-bold uppercase tracking-wider pl-1">Budget</label>
+                  <select
+                    value={searchPrice}
+                    onChange={(e) => setSearchPrice(e.target.value)}
+                    className="luxury-input py-2.5 text-sm"
+                  >
+                    <option value="">Any Budget</option>
+                    {searchStatus === 'rent' ? (
+                      <>
+                        <option value="1">Under 15,000 DH/mo</option>
+                        <option value="2">Over 15,000 DH/mo</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="3">500,000 - 3,000,000 DH</option>
+                        <option value="4">3,000,000 - 10,000,000 DH</option>
+                        <option value="5">Over 10,000,000 DH</option>
+                      </>
+                    )}
+                  </select>
+                </div>
+
+                {/* 4. Action Button */}
+                <div className="flex items-end">
+                  <button
+                    type="submit"
+                    className="btn-primary w-full flex items-center justify-center gap-2 py-3"
+                  >
+                    <Search className="w-4 h-4" />
+                    <span>Search Matches</span>
+                  </button>
+                </div>
+
+              </div>
+
+            </form>
+          </motion.div>
+        </div>
       </div>
 
       {/* 2. Visual Categories Navigation */}
-      <div className="max-w-7xl mx-auto px-3 md:px-4 py-16 md:py-20 relative z-25">
-        <div className="text-center mb-8 md:mb-12">
-          <span className="text-orange-500 text-xs font-bold uppercase tracking-widest pl-1 block mb-2 md:mb-3">Browse Collection</span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">Explore By Property Types</h2>
+      <div className="max-w-7xl mx-auto px-4 py-20 relative z-25">
+        <div className="text-center mb-12">
+          <span className="text-orange-500 text-xs font-bold uppercase tracking-widest pl-1 block mb-3">Browse Collection</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Explore By Property Types</h2>
         </div>
 
         <motion.div 
@@ -243,7 +240,7 @@ const Home = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6"
         >
           {[
             { id: 'apartment', label: 'Apartments', desc: 'Penthouse & Flats', icon: Building },
@@ -255,10 +252,10 @@ const Home = () => {
               key={cat.id}
               variants={itemVariants}
               onClick={() => handleCategoryClick(cat.id)}
-              className="glass-panel glass-panel-hover p-4 md:p-6 rounded-2xl flex flex-col items-center text-center gap-3 md:gap-4 group"
+              className="glass-panel glass-panel-hover p-6 rounded-2xl flex flex-col items-center text-center gap-4 group"
             >
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-slate-900/60 border border-slate-800 text-orange-500 group-hover:bg-orange-500 group-hover:text-white group-hover:scale-110 flex items-center justify-center transition-all duration-300 shadow-lg">
-                <cat.icon className="w-5 h-5 md:w-6 md:h-6" />
+              <div className="w-14 h-14 rounded-2xl bg-slate-900/60 border border-slate-800 text-orange-500 group-hover:bg-orange-500 group-hover:text-white group-hover:scale-110 flex items-center justify-center transition-all duration-300 shadow-lg">
+                <cat.icon className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-bold text-white text-md group-hover:text-orange-400 transition-colors">{cat.label}</h3>
@@ -270,12 +267,12 @@ const Home = () => {
       </div>
 
       {/* 3. Featured Property listings Grid */}
-      <div className="bg-slate-950/60 border-y border-slate-900 py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-3 md:px-4">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12">
+      <div className="bg-slate-950/60 border-y border-slate-900 py-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
-              <span className="text-orange-500 text-xs font-bold uppercase tracking-widest block mb-2 md:mb-3">Refined Curations</span>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white">Our Featured Listings</h2>
+              <span className="text-orange-500 text-xs font-bold uppercase tracking-widest block mb-3">Refined Curations</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">Our Featured Listings</h2>
             </div>
             <Link
               to="/search"
@@ -304,24 +301,24 @@ const Home = () => {
       </div>
 
       {/* 4. Luxury Statistics Bar */}
-      <div className="max-w-7xl mx-auto px-3 md:px-4 py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-8 bg-slate-950 border border-slate-900 rounded-2xl md:rounded-3xl p-6 md:p-10 relative overflow-hidden shadow-2xl">
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 bg-slate-950 border border-slate-900 rounded-3xl p-10 relative overflow-hidden shadow-2xl">
           <div className="absolute inset-0 bg-gradient-to-tr from-orange-950/10 via-transparent to-transparent pointer-events-none" />
           
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 relative z-10 border-b md:border-b-0 md:border-r border-slate-900 pb-6 md:pb-0 md:pr-8">
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">120M+ DH</span>
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 relative z-10 border-b md:border-b-0 md:border-r border-slate-900 pb-8 md:pb-0 md:pr-8">
+            <span className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">120M+ DH</span>
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Closed Transactions</span>
             <p className="text-xs text-slate-400 mt-2">Delivering peak valuations and reliable legal execution across all real estate trades.</p>
           </div>
 
-          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 relative z-10 border-b md:border-b-0 md:border-r border-slate-900 pb-6 md:pb-0 md:px-8">
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">1,200+</span>
+          <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 relative z-10 border-b md:border-b-0 md:border-r border-slate-900 pb-8 md:pb-0 md:px-8">
+            <span className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">1,200+</span>
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Happy Clients</span>
             <p className="text-xs text-slate-400 mt-2">Highly satisfied buyers, renters, developers, and brokers trust our secure platform.</p>
           </div>
 
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-2 relative z-10 md:pl-8">
-            <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">48+</span>
+            <span className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">48+</span>
             <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Certified Partners</span>
             <p className="text-xs text-slate-400 mt-2">Elite local brokers, investment consultants, and verified private sellers.</p>
           </div>

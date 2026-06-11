@@ -22,24 +22,6 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-slate-700/60 rounded-full hover:bg-orange-500/80 transition-colors duration-200;
   }
-
-  /* Mobile-responsive base font sizes */
-  html {
-    font-size: 16px;
-    -webkit-text-size-adjust: 100%;
-  }
-
-  @media (max-width: 640px) {
-    html {
-      font-size: 15px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    html {
-      font-size: 14px;
-    }
-  }
 }
 
 @layer components {
@@ -65,52 +47,9 @@
     @apply w-full px-4 py-3 bg-slate-900/60 border border-slate-800 rounded-xl text-slate-200 placeholder-slate-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-all duration-200 backdrop-blur-sm;
   }
 
-  @media (max-width: 640px) {
-    .luxury-input {
-      @apply px-3 py-2.5 text-sm;
-    }
-  }
-
-  /* Chat Message Bubbles */
-  .chat-bubble-sent {
-    @apply bg-gradient-to-br from-orange-600 to-amber-500 text-white rounded-2xl rounded-tr-sm px-5 py-3.5 shadow-lg shadow-orange-950/20;
-  }
-
-  .chat-bubble-received {
-    @apply bg-slate-800/80 text-slate-200 rounded-2xl rounded-tl-sm px-5 py-3.5 border border-slate-700/50;
-  }
-
-  @media (max-width: 640px) {
-    .chat-bubble-sent,
-    .chat-bubble-received {
-      @apply px-4 py-3 text-sm rounded-xl;
-    }
-  }
-
-  /* Chat Container */
-  .chat-container {
-    @apply flex flex-col h-full;
-  }
-
-  .chat-messages-area {
-    @apply flex-1 overflow-y-auto px-4 md:px-6 lg:px-8 py-4 md:py-6 space-y-4 md:space-y-5;
-    scroll-behavior: smooth;
-  }
-
-  .chat-input-area {
-    @apply border-t border-slate-800/60 p-3 md:p-4 lg:p-5 bg-slate-900/30 backdrop-blur-sm;
-  }
-
   /* Premium Buttons */
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg shadow-orange-950/30 hover:shadow-orange-500/20 hover:scale-[1.03];
-    animation: pulse-border 2.5s infinite;
-  }
-  
-  @keyframes pulse-border {
-    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    @apply px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 hover:from-orange-500 hover:to-amber-400 text-white font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg shadow-orange-950/30 hover:shadow-orange-500/20 hover:scale-[1.01];
   }
 
   .btn-secondary {

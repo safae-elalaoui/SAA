@@ -92,22 +92,22 @@ const Search = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 md:pt-28 pb-16 md:pb-20 px-3 md:px-8 max-w-7xl mx-auto">
+    <div className="min-h-screen pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
       
       {/* Search Header Line */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4 mb-6 md:mb-8">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-white">Find Your Dream Estate</h1>
-          <p className="text-slate-400 text-xs md:text-sm mt-1">
+          <h1 className="text-2xl md:text-3xl font-extrabold text-white">Find Your Dream Estate</h1>
+          <p className="text-slate-400 text-sm mt-1">
             {loading ? 'Searching catalog...' : `Showing ${properties.length} matches in Morocco`}
           </p>
         </div>
 
         {/* Global Toolbar Controls */}
-        <div className="flex items-center gap-2 md:gap-3 w-full md:w-auto">
+        <div className="flex items-center gap-3 w-full md:w-auto">
           {/* Sorting */}
           <div className="flex items-center gap-2 flex-grow md:flex-grow-0">
-            <span className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider hidden sm:inline">Sort:</span>
+            <span className="text-xs text-slate-500 font-bold uppercase tracking-wider hidden sm:inline">Sort:</span>
             <select
               value={filters.sort}
               onChange={(e) => handleFilterChange('sort', e.target.value)}
@@ -123,7 +123,7 @@ const Search = () => {
           {/* Mobile Filter Button */}
           <button
             onClick={() => setMobileFiltersOpen(true)}
-            className="md:hidden flex items-center justify-center gap-1.5 px-3 md:px-4 py-2 md:py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-300 font-semibold text-xs transition-colors hover:text-white"
+            className="md:hidden flex items-center justify-center gap-1.5 px-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-slate-300 font-semibold text-xs transition-colors hover:text-white"
           >
             <SlidersHorizontal className="w-4 h-4" />
             <span>Filters</span>
@@ -132,14 +132,14 @@ const Search = () => {
       </div>
 
       {/* Main Split Column Layout */}
-      <div className="flex gap-4 md:gap-8 items-start">
+      <div className="flex gap-8 items-start">
         
         {/* ============================================================== */}
         {/* A. DESKTOP ADVANCED SIDEBAR FILTERS PANEL                      */}
         {/* ============================================================== */}
-        <aside className="hidden md:flex flex-col w-72 lg:w-80 bg-slate-950 border border-slate-900 rounded-2xl p-4 lg:p-6 shadow-2xl shrink-0 sticky top-24 md:top-28 gap-4 lg:gap-6">
-          <div className="flex items-center justify-between border-b border-slate-900 pb-3 lg:pb-4">
-            <h2 className="font-bold text-white text-sm lg:text-md">Filter Searches</h2>
+        <aside className="hidden md:flex flex-col w-80 bg-slate-950 border border-slate-900 rounded-2xl p-6 shadow-2xl shrink-0 sticky top-28 gap-6">
+          <div className="flex items-center justify-between border-b border-slate-900 pb-4">
+            <h2 className="font-bold text-white text-md">Filter Searches</h2>
             <button
               onClick={handleClearFilters}
               className="text-slate-500 hover:text-orange-500 transition-colors flex items-center gap-1 text-xs font-semibold"
@@ -300,7 +300,7 @@ const Search = () => {
           {loading ? (
             <SkeletonList count={6} />
           ) : properties.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               <AnimatePresence>
                 {properties.map((property) => (
                   <PropertyCard key={property.id} property={property} />
@@ -311,11 +311,11 @@ const Search = () => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className="text-center py-16 md:py-20 px-4 md:px-6 glass-panel rounded-2xl max-w-lg mx-auto"
+              className="text-center py-20 px-6 glass-panel rounded-2xl max-w-lg mx-auto"
             >
-              <Compass className="w-12 h-12 md:w-14 md:h-14 text-slate-600 mx-auto mb-3 md:mb-4 animate-spin-slow" />
-              <h3 className="text-lg md:text-xl font-bold text-slate-200 mb-2">No Matching Listings Found</h3>
-              <p className="text-slate-400 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
+              <Compass className="w-14 h-14 text-slate-600 mx-auto mb-4 animate-spin-slow" />
+              <h3 className="text-xl font-bold text-slate-200 mb-2">No Matching Listings Found</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
                 We couldn't locate any premium real estate matching your exact search parameters. Try expanding your budget caps or clearing custom bedroom filters!
               </p>
               <button
@@ -350,9 +350,9 @@ const Search = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-[85vw] sm:w-80 bg-slate-900 border-l border-slate-800 p-4 md:p-6 z-50 overflow-y-auto flex flex-col gap-4 md:gap-6 md:hidden shadow-2xl"
+              className="fixed right-0 top-0 bottom-0 w-80 bg-slate-900 border-l border-slate-800 p-6 z-50 overflow-y-auto flex flex-col gap-6 md:hidden shadow-2xl"
             >
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3 md:pb-4">
+              <div className="flex items-center justify-between border-b border-slate-800 pb-4">
                 <h2 className="font-bold text-white text-md">Filters</h2>
                 <div className="flex items-center gap-3">
                   <button

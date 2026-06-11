@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+*.db
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local dev folder
+PROJETT/
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep

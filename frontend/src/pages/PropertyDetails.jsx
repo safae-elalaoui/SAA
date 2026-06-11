@@ -147,12 +147,12 @@ const PropertyDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen pt-24 md:pt-32 pb-16 md:pb-20 max-w-7xl mx-auto px-3 md:px-8 grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+      <div className="min-h-screen pt-32 pb-20 max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 flex flex-col gap-6 animate-pulse">
-          <div className="h-[320px] sm:h-[400px] md:h-[480px] bg-slate-900 rounded-2xl md:rounded-3xl shimmer" />
-          <div className="h-32 md:h-40 bg-slate-900 rounded-2xl md:rounded-3xl shimmer" />
+          <div className="h-[480px] bg-slate-900 rounded-3xl shimmer" />
+          <div className="h-40 bg-slate-900 rounded-3xl shimmer" />
         </div>
-        <div className="h-[400px] md:h-[520px] bg-slate-900 rounded-2xl md:rounded-3xl shimmer" />
+        <div className="h-[520px] bg-slate-900 rounded-3xl shimmer" />
       </div>
     );
   }
@@ -166,17 +166,17 @@ const PropertyDetails = () => {
   );
 
   return (
-    <div className="min-h-screen pt-24 md:pt-28 pb-16 md:pb-20 max-w-7xl mx-auto px-3 md:px-8">
+    <div className="min-h-screen pt-28 pb-20 max-w-7xl mx-auto px-4 md:px-8">
       
       {/* Back link */}
-      <div className="mb-4 md:mb-6">
-        <Link to="/search" className="text-slate-400 hover:text-orange-500 transition-colors text-xs md:text-sm font-semibold flex items-center gap-1">
+      <div className="mb-6">
+        <Link to="/search" className="text-slate-400 hover:text-orange-500 transition-colors text-sm font-semibold flex items-center gap-1">
           ← Back to Catalog Search
         </Link>
       </div>
 
       {/* Grid wrapper */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         
         {/* ============================================================== */}
         {/* A. LEFT COLUMN: IMAGE SLIDESHOW & DESCRIPTION                  */}
@@ -184,9 +184,9 @@ const PropertyDetails = () => {
         <div className="lg:col-span-2 flex flex-col gap-8">
           
           {/* Gallery Showcase */}
-          <div className="flex flex-col gap-3 md:gap-4">
+          <div className="flex flex-col gap-4">
             {/* Main Stage Image */}
-            <div className="h-[280px] sm:h-[380px] md:h-[480px] w-full rounded-2xl md:rounded-3xl overflow-hidden border border-slate-900 relative shadow-2xl bg-slate-900 select-none">
+            <div className="h-[380px] md:h-[480px] w-full rounded-3xl overflow-hidden border border-slate-900 relative shadow-2xl bg-slate-900 select-none">
               <img
                 src={getImageUrl(images[activeImageIdx])}
                 alt={property.title}
@@ -196,17 +196,17 @@ const PropertyDetails = () => {
               <button
                 onClick={handleToggleLike}
                 disabled={likeLoading}
-                className={`absolute top-4 md:top-6 right-4 md:right-6 z-20 p-2.5 md:p-3 rounded-full border backdrop-blur-md transition-all duration-300 ${
+                className={`absolute top-6 right-6 z-20 p-3 rounded-full border backdrop-blur-md transition-all duration-300 ${
                   isLiked
                     ? 'bg-orange-500 border-orange-400 text-white shadow-glow scale-105'
                     : 'bg-slate-950/70 border-white/10 text-slate-200 hover:text-orange-400 hover:border-orange-500/50 hover:bg-slate-950'
                 }`}
               >
-                <Heart className={`w-5 h-5 md:w-5.5 md:h-5.5 ${isLiked ? 'fill-current' : ''}`} />
+                <Heart className={`w-5.5 h-5.5 ${isLiked ? 'fill-current' : ''}`} />
               </button>
 
               {/* Status rent/sale tag */}
-              <span className={`absolute top-4 md:top-6 left-4 md:left-6 z-20 px-3 md:px-4 py-1.5 rounded-xl text-[10px] md:text-xs font-bold uppercase tracking-widest shadow-xl ${
+              <span className={`absolute top-6 left-6 z-20 px-4 py-1.5 rounded-xl text-xs font-bold uppercase tracking-widest shadow-xl ${
                 property.status === 'sale'
                   ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white'
                   : 'bg-slate-950/90 text-slate-100 border border-slate-800'
@@ -238,23 +238,23 @@ const PropertyDetails = () => {
           </div>
 
           {/* Specifications header card */}
-          <div className="glass-panel p-4 md:p-6 lg:p-8 rounded-2xl md:rounded-3xl flex flex-col gap-4 md:gap-6 shadow-2xl">
+          <div className="glass-panel p-6 md:p-8 rounded-3xl flex flex-col gap-6 shadow-2xl">
             
             {/* Title & Price */}
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-3 md:gap-4 border-b border-slate-900/60 pb-4 md:pb-6">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-slate-900/60 pb-6">
               <div>
-                <div className="flex items-center gap-1.5 text-[10px] md:text-xs text-orange-400 font-bold uppercase tracking-widest mb-2">
-                  <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                <div className="flex items-center gap-1.5 text-xs text-orange-400 font-bold uppercase tracking-widest mb-2">
+                  <MapPin className="w-4 h-4" />
                   <span>{property.city}</span>
                 </div>
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white leading-tight">
+                <h1 className="text-2xl md:text-3xl font-extrabold text-white leading-tight">
                   {property.title}
                 </h1>
-                <p className="text-slate-400 text-xs md:text-sm mt-2">{property.address}</p>
+                <p className="text-slate-400 text-sm mt-2">{property.address}</p>
               </div>
               <div className="text-left md:text-right shrink-0">
-                <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Evaluation</p>
-                <p className="text-xl sm:text-2xl md:text-3xl font-black text-white bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">
+                <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Evaluation</p>
+                <p className="text-2xl md:text-3xl font-black text-white bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text text-transparent">
                   {formatPrice(property.price)}
                   {property.status === 'rent' && <span className="text-xs font-semibold text-slate-400">/mo</span>}
                 </p>
@@ -262,41 +262,41 @@ const PropertyDetails = () => {
             </div>
 
             {/* Layout parameters */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 text-center">
-              <div className="p-3 md:p-4 bg-slate-900/40 rounded-xl md:rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
-                <span className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Property Type</span>
-                <span className="text-xs md:text-sm font-semibold text-white capitalize">{property.type}</span>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              <div className="p-4 bg-slate-900/40 rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
+                <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Property Type</span>
+                <span className="text-sm font-semibold text-white capitalize">{property.type}</span>
               </div>
-              <div className="p-3 md:p-4 bg-slate-900/40 rounded-xl md:rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
-                <BedDouble className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mb-1" />
-                <span className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Bedrooms</span>
-                <span className="text-xs md:text-sm font-semibold text-white">{property.type === 'land' ? 'N/A' : `${property.bedrooms} Beds`}</span>
+              <div className="p-4 bg-slate-900/40 rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
+                <BedDouble className="w-5 h-5 text-orange-500 mb-1" />
+                <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Bedrooms</span>
+                <span className="text-sm font-semibold text-white">{property.type === 'land' ? 'N/A' : `${property.bedrooms} Beds`}</span>
               </div>
-              <div className="p-3 md:p-4 bg-slate-900/40 rounded-xl md:rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
-                <Bath className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mb-1" />
-                <span className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Bathrooms</span>
-                <span className="text-xs md:text-sm font-semibold text-white">{property.type === 'land' ? 'N/A' : `${property.bathrooms} Baths`}</span>
+              <div className="p-4 bg-slate-900/40 rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
+                <Bath className="w-5 h-5 text-orange-500 mb-1" />
+                <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Bathrooms</span>
+                <span className="text-sm font-semibold text-white">{property.type === 'land' ? 'N/A' : `${property.bathrooms} Baths`}</span>
               </div>
-              <div className="p-3 md:p-4 bg-slate-900/40 rounded-xl md:rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
-                <Maximize className="w-4 h-4 md:w-5 md:h-5 text-orange-500 mb-1" />
-                <span className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider">Surface</span>
-                <span className="text-xs md:text-sm font-semibold text-white">{property.surface} m²</span>
+              <div className="p-4 bg-slate-900/40 rounded-2xl border border-slate-900 flex flex-col items-center gap-1">
+                <Maximize className="w-5 h-5 text-orange-500 mb-1" />
+                <span className="text-xs text-slate-500 font-bold uppercase tracking-wider">Surface</span>
+                <span className="text-sm font-semibold text-white">{property.surface} m²</span>
               </div>
             </div>
 
             {/* Full description */}
-            <div className="flex flex-col gap-2 md:gap-3">
-              <h3 className="font-extrabold text-white text-sm md:text-md uppercase tracking-wider border-b border-slate-900/60 pb-2">Description</h3>
-              <p className="text-slate-350 text-xs md:text-sm leading-relaxed whitespace-pre-line">
+            <div className="flex flex-col gap-3">
+              <h3 className="font-extrabold text-white text-md uppercase tracking-wider border-b border-slate-900/60 pb-2">Description</h3>
+              <p className="text-slate-350 text-sm leading-relaxed whitespace-pre-line">
                 {property.description}
               </p>
             </div>
           </div>
 
           {/* C. INTERACTIVE MAP SECTION */}
-          <div className="glass-panel p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl flex flex-col gap-3 md:gap-4">
-            <h3 className="font-extrabold text-white text-sm md:text-md uppercase tracking-wider border-b border-slate-900/60 pb-2">Geographic Location</h3>
-            <div className="h-64 sm:h-72 md:h-80 w-full overflow-hidden rounded-xl md:rounded-2xl border border-slate-900 shadow-inner relative z-10">
+          <div className="glass-panel p-6 rounded-3xl shadow-2xl flex flex-col gap-4">
+            <h3 className="font-extrabold text-white text-md uppercase tracking-wider border-b border-slate-900/60 pb-2">Geographic Location</h3>
+            <div className="h-80 w-full overflow-hidden rounded-2xl border border-slate-900 shadow-inner relative z-10">
               <MapContainer 
                 center={coords} 
                 zoom={13} 
@@ -323,28 +323,28 @@ const PropertyDetails = () => {
         {/* ============================================================== */}
         {/* B. RIGHT COLUMN: DIRECT CONTACT PANEL                          */}
         {/* ============================================================== */}
-        <div className="flex flex-col gap-6 md:gap-8">
+        <div className="flex flex-col gap-8">
           
           {/* Owner details card */}
-          <div className="glass-panel p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-2xl flex flex-col gap-4 md:gap-6">
-            <h3 className="font-extrabold text-white text-sm md:text-md uppercase tracking-wider border-b border-slate-900/60 pb-2 md:pb-3">Broker Contact</h3>
+          <div className="glass-panel p-6 rounded-3xl shadow-2xl flex flex-col gap-6">
+            <h3 className="font-extrabold text-white text-md uppercase tracking-wider border-b border-slate-900/60 pb-3">Broker Contact</h3>
             
             {/* Broker profile */}
-            <div className="flex items-center gap-3 md:gap-4">
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-tr from-orange-600 to-amber-400 text-white flex items-center justify-center font-extrabold text-base md:text-lg shadow-lg">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-orange-600 to-amber-400 text-white flex items-center justify-center font-extrabold text-lg shadow-lg">
                 {property.owner_name ? property.owner_name.charAt(0).toUpperCase() : 'B'}
               </div>
               <div>
-                <p className="font-bold text-white text-xs md:text-sm">{property.owner_name || 'Agent Partner'}</p>
-                <p className="text-[10px] md:text-xs text-slate-500">Verified Representative</p>
+                <p className="font-bold text-white text-sm">{property.owner_name || 'Agent Partner'}</p>
+                <p className="text-xs text-slate-500">Verified Representative</p>
               </div>
             </div>
 
             {/* Quick buttons */}
-            <div className="grid grid-cols-2 gap-2 md:gap-3">
+            <div className="grid grid-cols-2 gap-3">
               <a
                 href={`tel:${property.phone}`}
-                className="btn-secondary py-2.5 md:py-3 flex items-center justify-center gap-2 text-[10px] md:text-xs font-semibold"
+                className="btn-secondary py-3 flex items-center justify-center gap-2 text-xs font-semibold"
               >
                 <Phone className="w-4 h-4 text-orange-500" />
                 <span>Call Owner</span>
@@ -353,7 +353,7 @@ const PropertyDetails = () => {
                 href={`https://wa.me/${property.whatsapp}?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 md:py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-semibold flex items-center justify-center gap-2 text-[10px] md:text-xs transition-colors shadow-lg hover:shadow-emerald-500/20"
+                className="py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-semibold flex items-center justify-center gap-2 text-xs transition-colors shadow-lg hover:shadow-emerald-500/20"
               >
                 <MessageCircle className="w-4.5 h-4.5" />
                 <span>WhatsApp</span>
@@ -361,8 +361,8 @@ const PropertyDetails = () => {
             </div>
 
             {/* Inquiry Form */}
-            <form onSubmit={handleSendMessage} className="flex flex-col gap-3 md:gap-4 border-t border-slate-900/60 pt-4 md:pt-6">
-              <p className="text-[10px] md:text-xs text-slate-400 font-medium text-center">Or submit an email inquiry inquiry form below</p>
+            <form onSubmit={handleSendMessage} className="flex flex-col gap-4 border-t border-slate-900/60 pt-6">
+              <p className="text-xs text-slate-400 font-medium text-center">Or submit an email inquiry inquiry form below</p>
               
               {/* Senders Name */}
               <div className="flex flex-col gap-1.5">
@@ -414,7 +414,7 @@ const PropertyDetails = () => {
               <button
                 type="submit"
                 disabled={msgSending}
-                className="btn-primary w-full flex items-center justify-center gap-2 py-2.5 md:py-3 text-[10px] md:text-xs font-semibold"
+                className="btn-primary w-full flex items-center justify-center gap-2 py-3 text-xs font-semibold"
               >
                 <Send className="w-4 h-4" />
                 <span>{msgSending ? 'Sending Inquiry...' : 'Submit Inquiry'}</span>
@@ -431,9 +431,9 @@ const PropertyDetails = () => {
       {/* D. SIMILAR PROPERTIES ROW                                      */}
       {/* ============================================================== */}
       {similarProperties.length > 0 && (
-        <div className="border-t border-slate-900 mt-16 md:mt-20 pt-12 md:pt-16">
-          <h2 className="text-xl md:text-2xl font-bold text-white mb-6 md:mb-8">Similar Premium Recommendations</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="border-t border-slate-900 mt-20 pt-16">
+          <h2 className="text-2xl font-bold text-white mb-8">Similar Premium Recommendations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {similarProperties.map((prop) => (
               <PropertyCard key={prop.id} property={prop} />
             ))}

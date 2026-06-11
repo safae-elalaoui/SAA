@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, Phone, UserPlus, Home } from 'lucide-react';
+import { Mail, Lock, User, Phone, UserPlus } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 const Register = () => {
@@ -63,18 +63,14 @@ const Register = () => {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className="relative z-10 w-full max-w-md glass-panel p-8 md:p-10 rounded-3xl shadow-2xl"
       >
-        <Link to="/" className="absolute top-6 left-6 flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white transition-colors">
-          <Home className="w-4 h-4" />
-          <span>Back to Home</span>
-        </Link>
         {/* Title */}
-        <div className="text-center mb-8 mt-2">
+        <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2 group mb-4">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-orange-600 to-amber-400 flex items-center justify-center font-bold text-white text-lg">
               E
             </div>
             <span className="text-lg font-bold tracking-tight text-white">
-              Immo<span className="text-orange-500 font-extrabold">direct</span>
+              Estate<span className="text-orange-500 font-extrabold">Elite</span>
             </span>
           </Link>
           <h2 className="text-2xl font-bold text-white">Create Account</h2>

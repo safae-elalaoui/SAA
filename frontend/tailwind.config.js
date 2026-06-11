@@ -1,5 +1,3 @@
-const colors = require('tailwindcss/colors');
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -9,24 +7,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        orange: {
-          400: '#EAB308', // Gold
-          500: '#D4AF37', // Metallic Gold
-          600: '#CA8A04', // Dark Gold
-        },
-        amber: {
-          400: '#FDE047',
-          500: '#EAB308',
-        },
         luxury: {
-          dark: '#070C1B',
-          navy: '#0F172A',
-          slate: '#1E293B',
-          gold: '#D4AF37',
-          orange: '#D4AF37',
-          bronze: '#B45309',
-          light: '#F8FAFC',
-          glass: 'rgba(15, 23, 42, 0.65)'
+          dark: '#070C1B',       // Extreme deep slate black
+          navy: '#0F172A',       // Rich luxury navy
+          slate: '#1E293B',      // Elegant lighter slate
+          gold: '#FCBF49',       // Warm luxury gold accent
+          orange: '#F77F00',     // Vibrant signature orange
+          bronze: '#D97706',     // Sophisticated deep amber
+          light: '#F8FAFC',      // Soft primary light background
+          glass: 'rgba(15, 23, 42, 0.65)' // Premium glassmorphism base
         }
       },
       fontFamily: {
@@ -36,9 +25,9 @@ export default {
         xs: '2px',
       },
       boxShadow: {
-        'glow': '0 0 15px rgba(212, 175, 55, 0.3)',
+        'glow': '0 0 15px rgba(247, 127, 0, 0.3)',
         'luxury': '0 10px 30px -10px rgba(7, 12, 27, 0.15)',
-        'gold-glow': '0 0 15px rgba(212, 175, 55, 0.25)',
+        'gold-glow': '0 0 15px rgba(252, 191, 73, 0.25)',
       }
     },
   },
